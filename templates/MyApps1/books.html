@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>CBV ListView</title>
+    </head>
+    <body>
+        <h1>All Books Information(books.html)</h1>
+        <hr/>
+        {% comment %}{% if book_list %} {% endcomment %}
+        {% if books%}
+        {% comment %}{% for book in book_list%} {% endcomment %}
+            {% for book in books%}
+                <ul>
+                    <li> <strong>Title</strong> : {{book.title}}</li>
+                    <li> <strong>Author</strong> : {{book.author}}</li>
+                    <li> <strong>Pages</strong> : {{book.pages}}</li>
+                    <li> <strong>Price</strong> : {{book.price}}</li>
+                </ul>
+            <hr>
+            {%endfor%}
+        {% else %}
+            <p>No Books information Found..!!!</p>
+        {% endif %}
+    </body>
+</html>
+

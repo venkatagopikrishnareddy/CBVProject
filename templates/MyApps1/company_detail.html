@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{%extends 'MyApps1/base.html'%}
+{%block body_block%}
+    <style>
+    body{
+        background-color:lightcyan;
+    }
+    h1{
+        color:blue;
+    }
+    h3{
+        color:blue;
+    }
+    span{
+        color:black;
+    }
+    a{
+        color: red;
+        font-size: 20px;
+    }
+    </style>
+    <h1>Your Selected Company-Details/Information</h1>
+    <hr />
+    <ul>
+        <h3><li>Company Name:<span>{{company.name|upper}}</span></li></h3>
+        <h3><li>Company Location:<span>{{company.location|title}}</span></li></h3>
+        <h3><li>Company CEO:<span>{{company.ceo|title}}</span></li></h3>
+        <a href="/companies/">Click Here Goto-Back</a>
+
+        <h3>****Employee Information in {{ company.name | upper }}</h3>
+        {% if company.employees.all %}
+            {%for emp in company.employees.all%}
+                <ul>
+                    <li>Employee Number : {{emp.eno}}</li>
+                    <li>Employee Name : {{emp.name}}</li>
+                    <li>Employee Salary : {{emp.salary}}</li>
+                    <hr />
+                </ul>
+            {%endfor%}
+        {% else %}
+                <p style="color:red;background-color: yellow;">No-Emp-Records in given Company : {{ company.name }}</p>
+        {% endif %}
+    </ul>
+	<a href="/companies/">Click-Here to go-back...</a>
+{%endblock%}
